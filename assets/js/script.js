@@ -6,7 +6,7 @@ function displayTime() {
     var rightNow = moment().format('dddd, MMMM Do YYYY [at] h:mm:ss A');
     currentDayEl.text(rightNow);
 }
-setInterval(displayTime, 1000);
+
 // setting currentTime to military hours
 var currentTime = moment().format("HH")
 var timeNow = parseInt(currentTime);
@@ -19,33 +19,35 @@ var inputArray = ["", "", "", "", "", "", "", "", ""]
 for (var i = 0; i < hoursArray.length; i++){
     if (timeNow > hoursArray[i]){
         $('#' + hoursArray[i]).addClass("past")
-     } else if (timeNow < hoursArray[i]) {
+    } else if (timeNow < hoursArray[i]) {
         $('#' + hoursArray[i]).addClass("future")
-     } else {
+    } else {
         $('#' + hoursArray[i]).addClass("present")
-     }
+    }
     }
 
-
+    
 saveButton.on('click', function(event) {
 event.preventDefault();
 var id =$(this).prev().attr('id');
     // need to find the index in the inputArray that references this hour
-for (var i = 0; i < hoursArray.length; i++){
+    for (var i = 0; i < hoursArray.length; i++){
     if (id == hoursArray[i]) {
         inputArray[i] = $(this).prev().val()
         }
     }
     localStorage.setItem('userData', JSON.stringify(inputArray));
-    var userInput = JSON.parse(localStorage.getItem('userData'));
-    console.log(userInput);
+})  
 
-   
-for (var i = 0; i < userInput.length; i++) {
-    if (id == userInput[i]) {
-        userInput[i] = $(this).prev().text()
-    }
-        
+function loadSchedule() {
+    var data = JSON.parse(localStorage.getItem('userData'));
+    for (var i = 0; i < data.length; i++) { 
+        var input_id = i + 9;
+        var text = data[i];
+        $('#' + input_id).val(text);
+       }
 }
+loadSchedule();
+setInterval(displayTime, 1000);
 
-})
+
