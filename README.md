@@ -8,6 +8,6 @@
 - https://selden-cbc2021.github.io/Daily-Event-Planner/
 ## Usage 
 - Click any timeblock you want and enter an event then click the save button that corresponds to the timeblock and the event will be saved and persist even after a page refresh.
--  ![alt text](assets/images/wds1.PNG)
--  ![alt text](assets/images/wds2.PNG)
+-  ![alt text](assets/images/wds1.png)
+-  ![alt text](assets/images/wds2.png)
 
